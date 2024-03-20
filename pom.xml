@@ -79,9 +79,9 @@
 		<dependency>
 			<groupId>org.mariadb.jdbc</groupId>
 			<artifactId>mariadb-java-client</artifactId>
-			<version>2.7.2</version> <!-- Versão do driver MariaDB -->
+			<version>3.3.3</version> <!-- Versão do driver MariaDB -->
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
