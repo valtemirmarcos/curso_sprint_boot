@@ -5,10 +5,12 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.lucasangelo.todosimple.models.User;
 // import com.lucasangelo.todosimple.repositories.TaskRepository;
 import com.lucasangelo.todosimple.repositories.UserRepository;
+import org.springframework.http.HttpStatus;
 
 @Service
 public class UserService {
@@ -23,7 +25,8 @@ public class UserService {
 
     public User findById(Long id){
         Optional<User> user = this.userRepository.findById(id);
-        return user.orElseThrow(() -> new RuntimeException(
+        return user.orElseThrow(() -> new ResponseStatusException(
+            HttpStatus.NOT_FOUND,
             "Usuario não encontrado! Id: "+ id +", Tipo: "+User.class.getName()
         ));
     }
@@ -49,7 +52,7 @@ public class UserService {
         try {
             this.userRepository.deleteById(id);
         } catch (Exception e) {
-           throw new RuntimeException("Não é possivel excluir pois a dados relacionados a este usuario!");
+           throw new RuntimeException("Não é possivel excluir pois ha dados relacionados a este usuario!");
         }
     }
 }
